@@ -33,8 +33,10 @@ The Users table should contain the following columns :
 
 ### Users
 - / (GET) - returns a list of all users;
-- / (POST) - Download the CSV file. Required columns in CSV file: "UserName", "FirstName", "LastName" , "Age". Separator - ";".
+- / (POST) - Download the CSV file. Required columns in CSV file: "UserName", "FirstName", "LastName" , "Age". Separator - ";". Required name of csv file - "data.csv".
 - /download-csv (GET) - downloads CSV file with all users in database. Response - all users.
+
+
 
 
 
