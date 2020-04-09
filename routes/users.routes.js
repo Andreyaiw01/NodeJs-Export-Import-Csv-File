@@ -1,12 +1,12 @@
 const express = require("express");
-router = express.Router();
 const uploadController = require("../controllers/upload.controller");
-const findAllUsers = require('../controllers/findAllUsers.controller');
 const exportCsv = require('../controllers/exportCsv.controller');
+const usersController = require('../controllers/users.controller');
+router = express.Router();
 
 router.route('/')
 .post(uploadController.upload)
-.get(findAllUsers)
+.get(usersController.getAll);
 
 router.route('/download-csv')
 .get(exportCsv)

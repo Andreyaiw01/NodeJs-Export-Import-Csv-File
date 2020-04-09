@@ -1,10 +1,10 @@
-const getUsersFromDb = require('../models/getUsersFromDb.model');
+const User = require('../models/users.model');
 const fastcsv = require("fast-csv");
 const fs = require("fs");
 
 const exportCsv = (req, res) => {    
   
-  getUsersFromDb( async (err, data) => {
+  User.findAll({raw: true}).then(async data => {
     if(data) {
       const ws = fs.createWriteStream("./exportCsv/mysql_to_csv.csv");        
       await fastcsv
@@ -16,9 +16,9 @@ const exportCsv = (req, res) => {
       res.download('./exportCsv/mysql_to_csv.csv');
       res.status(200).send(data);      
     } else {
-      res.status(500).send('Smth bad' + err);
-    }
-  });
+      res.status(500).send('Smth bad: ' + err);
+    }  
+  }).catch(err=>console.log(err));
 
 }
 
